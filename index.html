@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контроль вивчення іноземної мови</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="difficulty-panel">
+            <h2 class="difficulty-title">Рівень складності</h2>
+            <label class="radio-option">
+                <input type="radio" name="difficulty" value="beginner" checked>
+                <span>Початковий</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="difficulty" value="intermediate">
+                <span>Середній</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="difficulty" value="advanced">
+                <span>Високий</span>
+            </label>
+        </aside>
+
+        <main class="main-panel">
+            <div id="word-card" class="card" title="Натисніть на картку для перевірки">
+                <span id="word-text">loading...</span>
+                <span id="card-hint" class="card-hint">Натисніть на картку, щоб перевірити</span>
+            </div>
+
+            <div class="navigation">
+                <button id="prev-btn" class="nav-btn" aria-label="Попереднє слово">&larr;</button>
+                <span id="step-counter" class="step-text">1/10</span>
+                <button id="next-btn" class="nav-btn" aria-label="Наступне слово">&rarr;</button>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="translation-input" placeholder="Введіть переклад..." autocomplete="off">
+                <div id="validation-msg" class="validation-msg">Введіть переклад перед перевіркою!</div>
+            </div>
+
+            <div class="stats-section">
+                <h3 class="stats-title">Статистика</h3>
+                <div class="stats-counters">
+                    <div class="stat-item correct">
+                        <span class="stat-label">Вірно</span>
+                        <span id="correct-count" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item incorrect">
+                        <span class="stat-label">Невірно</span>
+                        <span id="incorrect-count" class="stat-value">0</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="result-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2>Тестування завершено!</h2>
+            <p class="modal-difficulty">Рівень складності: <strong id="selected-difficulty-label">-</strong></p>
+            <p class="modal-score">Ваш результат: <span id="final-score">0</span> з <span id="total-words">10</span></p>
+            <p class="modal-level">Оцінка знань: <strong id="knowledge-level">-</strong></p>
+            <button id="restart-btn" class="restart-btn">Спробувати ще раз</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
